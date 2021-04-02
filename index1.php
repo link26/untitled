@@ -1,2 +1,2 @@
 <?php
-file test1
+file test2
