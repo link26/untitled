@@ -1,0 +1,30 @@
+on: 
+  push:
+    branches: [master]
+
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy to website!
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 14
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
+        
+    - name: Let test some packeges
+      run: npm --version
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm install -g gatsby-cli
+        npm install gatsby-plugin-sharp
+        gatsby build
+
+    - name: CD & magic
+      run: ls -la
